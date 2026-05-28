@@ -1,6 +1,5 @@
 # Порахувати кількість унікальних символів в строці. Якщо їх більше 10 - вивести в консоль True, інакше - False.
 # Строку отримати за допомогою функції input()
-from enum import unique
 
 new_string = input("Please enter a new string: ")
 unique_words = len (set(new_string.lower()))
