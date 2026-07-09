@@ -64,3 +64,19 @@ def log_function_call(func):
         return result
 
     return wrapper
+
+
+# Створіть декоратор, який перехоплює та обробляє винятки, які виникають в ході виконання функції.
+import functools
+
+
+def handle_exceptions(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            print(f"[ERROR] {func.__name__}: {e}")
+            return None
+
+    return wrapper
