@@ -1,0 +1,4 @@
+2026-08-04 09:54:16,058 - INFO - POST /auth -> 200
+2026-08-04 09:54:16,067 - INFO - GET /cars -> 200
+2026-08-04 09:54:16,068 - INFO - Returned cars: [{'brand': 'Chevrolet', 'engine_volume': 1.8, 'price': 28000, 'year': 2018}, {'brand': 'Hyundai', 'engine_volume': 1.6, 'price': 29000, 'year': 2020}, {'brand': 'Honda', 'engine_volume': 1.6, 'price': 30000, 'year': 2016}, {'brand': 'Kia', 'engine_volume': 2.0, 'price': 31000, 'year': 2019}, {'brand': 'Ford', 'engine_volume': 2.2, 'price': 32000, 'year': 2015}]
+2026-08-04 09:54:16,068 - INFO - Test passed successfully.
