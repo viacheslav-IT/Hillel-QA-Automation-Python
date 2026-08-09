@@ -1,0 +1,58 @@
+# Написати 25 XPath та 25 CSS локаторів для сайту https://qauto2.forstudy.space/
+# Використовувати функцію text(), пошук за атрибутом @, та складні локатори (більш ніж з одним елементом)
+
+xpath_locators = {
+    1: "//span[text()='Як потрапити у майбутнє? Трансформація навчання.']",
+    2: "//a[@aria-label='2']",
+    3: "//a[@href='https://www.youtube.com/watch?v=znjjCOIw8Wc']",
+    4: "//span[contains(text(),'Трансформація')]",
+    5: "//span[contains(text(),'майбутнє')]",
+    6: "//a[@aria-label='2']/span",
+    7: "//a[@aria-label='2']//span",
+    8: "//span[@class='ytAttributedString ytVideoInfoTitleAttributeStringWhiteSpaceNoWrap']",
+    9: "//div[@class='ytmVideoInfoVideoTitleContainer ytmVideoInfoLogoEnabled']//span",
+    10: "//div[contains(@class,'ytmVideoInfoVideoTitleContainer')]",
+    11: "//a[contains(@href,'watch?v=')]",
+    12: "//a[contains(@href,'youtube.com')]",
+    13: "//span[contains(@class,'ytAttributedString')]",
+    14: "//embedded-player-video-details//span",
+    15: "//player-top-controls//span",
+    16: "//div[@class='ytmVideoInfoVideoTitleContainer ytmVideoInfoLogoEnabled']/a/span",
+    17: "//a[@aria-label='2' and contains(@href,'watch')]",
+    18: "//span[text()='Як потрапити у майбутнє? Трансформація навчання.']/ancestor::a",
+    19: "//span[text()='Як потрапити у майбутнє? Трансформація навчання.']/parent::a",
+    20: "//span[text()='Як потрапити у майбутнє? Трансформація навчання.']/following::a[1]",
+    21: "//span[text()='Як потрапити у майбутнє? Трансформація навчання.']/preceding::div[1]",
+    22: "//a[@aria-label='2']/following-sibling::a",
+    23: "//div[contains(@class,'ytmVideoInfoVideoDetailsContainer')]//a",
+    24: "//a[@aria-label='2']//following::span[1]",
+    25: "//*[@class='ytAttributedString ytVideoInfoTitleAttributeStringWhiteSpaceNoWrap']"
+}
+
+css_locators = {
+    1: "span.ytAttributedString",
+    2: "a[aria-label='2']",
+    3: "a[href*='watch?v=']",
+    4: "a[href*='youtube.com']",
+    5: "span.ytVideoInfoTitleAttributeStringWhiteSpaceNoWrap",
+    6: "div.ytmVideoInfoVideoTitleContainer",
+    7: "div.ytmVideoInfoVideoTitleContainer > a",
+    8: "div.ytmVideoInfoVideoTitleContainer > a > span",
+    9: "embedded-player-video-details span",
+    10: "player-top-controls span",
+    11: "div.ytmVideoInfoVideoDetailsContainer a",
+    12: "div.ytmVideoInfoVideoTitleContainer a[aria-label='2']",
+    13: "a[aria-label='2'] > span",
+    14: "a[aria-label='2'] span",
+    15: "div[class*='ytmVideoInfoVideoTitleContainer']",
+    16: "span[class*='ytAttributedString']",
+    17: "a[href^='https://www.youtube.com']",
+    18: "a[href$='znjjCOIw8Wc']",
+    19: "div.ytmVideoInfoVideoTitleContainer + div",
+    20: "div.ytmVideoInfoVideoTitleContainer ~ div",
+    21: "player-top-controls div.ytmVideoInfoVideoTitleContainer",
+    22: "embedded-player-video-details > div span",
+    23: "a[aria-label='2'][href*='watch']",
+    24: "div.ytmVideoInfoVideoTitleContainer span.ytAttributedString",
+    25: "span[class='ytAttributedString ytVideoInfoTitleAttributeStringWhiteSpaceNoWrap']"
+}
