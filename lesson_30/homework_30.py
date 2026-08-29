@@ -16,31 +16,49 @@ def db_connection():
   yield conn
   conn.close()
 
+
 @allure.feature("Database Operations")
-@allure.story("CRUD Operations for Users")
-@allure.title("Test User CRUD operations in Database")
+@allure.story("User Management")
+@allure.title("Verify Complete User CRUD in Database")
+@allure.description("This test validates CRUD operations for users in the database.")
+@allure.issue("AUTH-1234", name="Jira Issue")
+@allure.link("https://wiki.example.com/db-testing", name="Database verification documents")
 def test_user_crud_operations(db_connection):
   db_page = UserDatabasePage(db_connection)
 
-  # 1. Create table
-  db_page.create_table()
+  @allure.step("Create table")
+  def step_create_table():
+    db_page.create_table()
 
-  # 2. Add a record
-  user_id = db_page.add_user("Alice", "User")
-  assert user_id is not None, "Failed to add record"
+  @allure.step("Add new user")
+  def step_add_user(name, surname):
+    uid = db_page.add_user(name, surname)
+    assert uid is not None, "Failed to add record"
+    return uid
 
-  # 3. Select data
-  user = db_page.get_user(user_id)
-  assert user == ("Alice", "User"), "Failed to select data correctly"
+  @allure.step("Retrieve user with ID")
+  def step_get_user(user_id):
+    user = db_page.get_user(user_id)
+    assert user == ("Alice", "User"), "Failed to select data"
+    return user
 
-  # 4. Update records
-  db_page.update_user_role(user_id, "Admin")
-  updated_user = db_page.get_user(user_id)
-  assert updated_user[1] == "Admin", "Failed to update record role"
+  @allure.step("Update user role")
+  def step_update_user(user_id, new_role):
+    db_page.update_user_role(user_id, new_role)
+    updated_user = db_page.get_user(user_id)
+    assert updated_user[1] == new_role, "Failed to update record role"
 
-  # 5. Delete records
-  db_page.delete_user(user_id)
-  count = db_page.count_user(user_id)
-  assert count == 0, "Failed to delete record"
+  @allure.step("Delete user")
+  def step_delete_user(user_id):
+    db_page.delete_user(user_id)
+    count = db_page.count_user(user_id)
+    assert count == 0, "Failed to delete record"
+
+  # Execute test steps
+  step_create_table()
+  user_id = step_add_user("Alice", "User")
+  step_get_user(user_id)
+  step_update_user(user_id, "Admin")
+  step_delete_user(user_id)
 
   db_page.close()
