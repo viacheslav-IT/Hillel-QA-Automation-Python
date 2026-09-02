@@ -24,7 +24,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh './venv/bin/pytest lesson_31/ --junitxml=result.xml'
+                sh './venv/bin/pytest lesson_31/ --junitxml=result.xml --alluredir=allure-results'
             }
         }
     }
@@ -32,6 +32,7 @@ pipeline {
     post {
         always {
             junit 'result.xml'
+            allure includeProperties: false, results: [[path: 'allure-results']]
             emailext to: 'dykyi.viacheslav@gmail.com',
                 subject: "Build Status: ${currentBuild.currentResult} - Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
                 body: """
